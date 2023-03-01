@@ -22,14 +22,14 @@ export default async function handler(req) {
         <div
           style={{
             backgroundImage:
-              "url(https://baumannzone-dev-og.vercel.app/open-graph-bg.png)",
+              "url(https://ob-css-pills-og.vercel.app/open-graph-bg.png)",
             height: "100%",
             width: "100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
             justifyContent: "flex-start",
-            backgroundColor: "#aaa",
+            backgroundColor: "white",
             fontSize: 32,
             fontWeight: 600,
           }}
@@ -38,7 +38,7 @@ export default async function handler(req) {
             style={{
               marginTop: 130,
               marginLeft: 525,
-              fontSize: 105,
+              fontSize: 65,
               fontFamily: "Open Sans",
               color: "white",
             }}
