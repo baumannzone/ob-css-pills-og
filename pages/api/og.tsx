@@ -1,21 +1,33 @@
 import { ImageResponse } from "@vercel/og";
 
-export const config = {
-  runtime: "experimental-edge",
-};
+export const config = { runtime: "experimental-edge" };
 
-const font = fetch(
-  new URL("../../assets/OpenSans-SemiBold.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
+const font = fetch(new URL("../../assets/OpenSans-SemiBold.ttf", import.meta.url))
+  .then((res) => res.arrayBuffer());
+
+const bgImageURL = "https://ob-css-pills-og.vercel.app/open-graph-bg.png";
+const defaultTitle = "Quick and clear CSS tips in 5 min or less";
+const fontFamilyName = "Open Sans";
+const defaultFontSize = 65;
 
 export default async function handler(req) {
   try {
     const fontData = await font;
     const { searchParams } = new URL(req.url);
     const hasTitle = searchParams.has("title");
-    const title = hasTitle
-      ? searchParams.get("title")
-      : "Quick and clear CSS tips in 5 min or less";
+    const hasFontSize = searchParams.has("fontSize");
+    
+    // If the URL search parameter "title" is set, use the value of the parameter as the title.
+    // Otherwise, use the default value.
+    const title = hasTitle ? searchParams.get("title") : defaultTitle
+
+    // If the URL search parameter "fontSize" is set and is a number,
+    // use the value of the parameter as the font size.
+    // Otherwise, use a default value of 65.
+    const fontSize =
+      hasFontSize && !isNaN(parseInt(searchParams.get("fontSize")))
+        ? parseInt(searchParams.get("fontSize"))
+        : defaultFontSize;
 
     return new ImageResponse(
       (
@@ -24,7 +36,7 @@ export default async function handler(req) {
             width: "100%",
             height: "100%",
             backgroundColor: "#38bdf8",
-            backgroundImage: "url(https://ob-css-pills-og.vercel.app/open-graph-bg.png)",
+            backgroundImage: `url(${bgImageURL})`,
             display: "flex",
             alignItems: "center",
           }}
@@ -35,8 +47,8 @@ export default async function handler(req) {
               marginBottom: 125,
               paddingLeft: 30,
               paddingRight: 30,
-              fontSize: 65,
-              fontFamily: "Open Sans",
+              fontSize: fontSize,
+              fontFamily: fontFamilyName,
               color: "white",
             }}
           >
@@ -50,7 +62,7 @@ export default async function handler(req) {
         
         fonts: [
           {
-            name: "Open Sans",
+            name: fontFamilyName,
             data: fontData,
             style: 'normal',
           },
@@ -59,7 +71,7 @@ export default async function handler(req) {
     );
   } catch (err) {
     console.log(`${err.message}`);
-    return new Response(`Failed to generate the image`, {
+    return new Response(`Failed generating the image`, {
       status: 500,
     });
   }

@@ -1,4 +1,4 @@
-# Vercel OG + Next.js
+# CSS Pills Open Graph Service
 
 This example shows how to use [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) with Next.js.
 
@@ -12,14 +12,19 @@ This example shows how to use [Vercel OG](https://vercel.com/docs/concepts/funct
 
 Visit https://ob-css-pills-og.vercel.app/api/og and append the following query parameters:
 
-- `title` (required): The title of the card
+- `title` (optional): The title of the card
+  - default value: "Quick and clear CSS tips in 5 min or less"
+- `fontSize` (optional): The font size of the title in `px`.
+  - default value: 65
 
 For example, you can visit https://ob-css-pills-og.vercel.app/api/og?title=Hello%20World to see a card with the title "Hello World".
-
 ![Hello World](https://ob-css-pills-og.vercel.app/api/og?title=Hello%20World)
 
+Or you can visit https://ob-css-pills-og.vercel.app/api/og?title=Hello%20World&fontSize=45 to see a card with the title "Hello World" and a font size of 45px.
+![Hello World](https://ob-css-pills-og.vercel.app/api/og?title=Hello%20World&fontSize=100)
+
 By default, the card will be generated with the following text:
-**Quick and clear CSS tips in 5 min or less**
+**Quick and clear CSS tips in 5 min or less** and the font size will be 65px.
 ![CSS Pills](https://ob-css-pills-og.vercel.app/api/og)
 
 ### Clone and Deploy
