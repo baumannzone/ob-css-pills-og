@@ -14,30 +14,27 @@ export default async function handler(req) {
     const { searchParams } = new URL(req.url);
     const hasTitle = searchParams.has("title");
     const title = hasTitle
-      ? searchParams.get("title").slice(0, 75)
-      : "Programación y Desarrollo Web con JavaScript";
+      ? searchParams.get("title")
+      : "Quick and clear CSS tips in 5 min or less";
 
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundImage:
-              "url(https://ob-css-pills-og.vercel.app/open-graph-bg.png)",
-            height: "100%",
             width: "100%",
+            height: "100%",
+            backgroundColor: "#38bdf8",
+            backgroundImage: "url(https://ob-css-pills-og.vercel.app/open-graph-bg.png)",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
-            backgroundColor: "white",
-            fontSize: 32,
-            fontWeight: 600,
+            alignItems: "center",
           }}
-        >
+          >
           <div
             style={{
-              marginTop: 130,
-              marginLeft: 525,
+              marginLeft: 460,
+              marginBottom: 125,
+              paddingLeft: 30,
+              paddingRight: 30,
               fontSize: 65,
               fontFamily: "Open Sans",
               color: "white",
