@@ -10,7 +10,7 @@ export default function Page() {
         fontSize: '1.5rem',
       }}>
         {`
-        path: ${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''}/api/og
+        path: /api/og
         `}
 
         {`
