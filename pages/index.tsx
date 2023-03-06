@@ -1,18 +1,16 @@
-import {
-  defaultTitle,
-  defaultFontSize
-} from "../assets/constants";
+import { defaultTitle, defaultFontSize } from '../assets/constants';
 
 export default function Page() {
   return (
     <pre>
-      <code style={{
-        fontSize: '1.5rem',
-      }}>
+      <code
+        style={{
+          fontSize: '1.5rem',
+        }}
+      >
         {`
         path: /api/og
         `}
-
         {`
         queryParams: {
           title: {
@@ -28,5 +26,5 @@ export default function Page() {
         }`}
       </code>
     </pre>
-  )
+  );
 }
